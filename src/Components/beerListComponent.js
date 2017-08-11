@@ -9,7 +9,11 @@ export default class BeerList extends React.Component {
   }
 
   componentDidMount() {
-    this.BeerList();
+    console.log("mounting...");
+  }
+  
+  componentWillMount() {
+    //this.BeerList();
   }
 
   BeerList() { 
