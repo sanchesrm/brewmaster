@@ -1,34 +1,55 @@
 import React from 'react';
-import $ from 'jquery'; 
+import axios from 'axios'; 
 
 export default class BeerList extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {person: []};
+    this.state = { beers: []};
   }
 
   componentDidMount() {
     this.BeerList();
   }
 
-  BeerList() {
-    return $.getJSON('https://randomuser.me/api/')
+  BeerList() { 
+    return axios.get('http://api.brewerydb.com/v2/search', {
+        params: {
+          q: 'a',
+          key: 'af9e8a6d55f59aa1afdde3f99f4a4528'
+        }, headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET'
+        }
+      })
       .then((data) => {
-        this.setState({ person: data.results });
+        console.log(data.data);
+        this.setState({ beers: data.data.data });
+      })
+      .catch(function (error) {
+        console.log(error);
       });
   }
 
   render() {
-    const persons = this.state.person.map((item, i) => {
-      return <div>
-        <h1>{item.name.first}</h1>
-        <span>{item.cell}, {item.email}</span>
+    const beers = this.state.beers.map((item, i) => {
+      return <div key={item.id}>
+        <div></div>
+        <span>{item.nameDisplay}</span>
+        <span>{item.abv}</span>
       </div>
     });
 
-    return <div id="layout-content" className="layout-content-wrapper">
-      <div className="panel-list">{ persons }</div>
+    return <div>
+      {beers}
     </div>
+    // return <div id="layout-content" className="layout-content-wrapper">
+    //   <div className="panel-list">{ beers }</div>
+    // </div>
+    // return <div>
+    //         <Pagination items={10} activePage={2} maxButtons={8}>
+    //           {beers}
+    //         </Pagination>
+    //       </div>
   }
 }
