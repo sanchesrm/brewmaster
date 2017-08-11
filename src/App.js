@@ -5,6 +5,7 @@ import 'materialize-css/dist/css/materialize.min.css';
 import {Button} from 'react-materialize'
 import './App.css';
 import BeerList from './Components/beerListComponent.js'
+import CustomRouter from './Components/customRouter.js'
 
 class App extends Component {
   render() {
@@ -17,6 +18,7 @@ class App extends Component {
         <Button waves='light'>
             EDIT ME
         </Button>
+        <CustomRouter/>
         <BeerList/>
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
