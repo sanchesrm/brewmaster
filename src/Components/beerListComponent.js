@@ -1,4 +1,7 @@
 import React from 'react';
+import {
+  Link
+} from 'react-router-dom'
 import axios from 'axios'; 
 
 export default class BeerList extends React.Component {
@@ -27,7 +30,6 @@ export default class BeerList extends React.Component {
         }
       })
       .then((data) => {
-        console.log(data.data);
         this.setState({ beers: data.data.data });
       })
       .catch(function (error) {
@@ -37,23 +39,19 @@ export default class BeerList extends React.Component {
 
   render() {
     const beers = this.state.beers.map((item, i) => {
-      return <div key={item.id}>
-        <div></div>
-        <span>{item.nameDisplay}</span>
-        <span>{item.abv}</span>
-      </div>
+      if (item.labels && item.labels.icon)
+        return (
+          <li key={item.id} className="collection-item avatar"> <a href={'/beers/' + item.id}>
+              {item.labels && item.labels.icon && <img src={item.labels.icon} className="circle" />}
+              <span className="title">{item.nameDisplay}</span>
+              <p> <span> {item.abv} </span></p>
+            </a>
+          </li>
+        )
     });
 
-    return <div>
+    return <ul className="collection" > 
       {beers}
-    </div>
-    // return <div id="layout-content" className="layout-content-wrapper">
-    //   <div className="panel-list">{ beers }</div>
-    // </div>
-    // return <div>
-    //         <Pagination items={10} activePage={2} maxButtons={8}>
-    //           {beers}
-    //         </Pagination>
-    //       </div>
+    </ul>
   }
 }

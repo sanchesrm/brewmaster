@@ -14,7 +14,7 @@ class App extends Component {
           <h2 ><Icon large className="material-icons">local_drink</Icon> </h2>
         </div>
         <Button waves='light'>
-            EDIT ME
+            ADD BEER
         </Button>
         <CustomRouter/>
       </div>
