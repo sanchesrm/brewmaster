@@ -35,12 +35,15 @@ export default class BeerList extends React.Component {
 
   render() {
     const beers = this.state.beers.map((item, i) => {
-      return <li key={item.id} className="collection-item avatar"> <a href={'/beers/' + item.id}>
-          {item.labels && item.labels.icon && <img src={item.labels.icon} className="circle" />}
-          <span className="title">{item.nameDisplay}</span>
-          <p> <span> {item.abv} </span></p>
-        </a>
-      </li>
+      if (item.labels && item.labels.icon)
+        return (
+          <li key={item.id} className="collection-item avatar"> <a href={'/beers/' + item.id}>
+              {item.labels && item.labels.icon && <img src={item.labels.icon} className="circle" />}
+              <span className="title">{item.nameDisplay}</span>
+              <p> <span> {item.abv} </span></p>
+            </a>
+          </li>
+        )
     });
 
     return <ul className="collection" > 

@@ -13,7 +13,7 @@ class App extends Component {
           <h2>Brewmaster</h2>
         </div>
         <Button waves='light'>
-            EDIT ME
+            ADD BEER
         </Button>
         <CustomRouter/>
       </div>
