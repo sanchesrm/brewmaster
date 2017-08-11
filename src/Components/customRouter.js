@@ -13,7 +13,7 @@ export default class CustomRouter extends Component {
         <BrowserRouter>
             <div>
                 <Route path="/beers/:id" component={BeerDetail} />
-                <Route path="/" component={BeerList} />
+                <Route path="/list" component={BeerList} />
             </div>
         </BrowserRouter >
     );
