@@ -5,6 +5,7 @@ import {
 } from 'react-router-dom';
 
 import BeerDetail from './beerDetailComponent.js'
+import BeerList from './beerListComponent.js'
 
 export default class CustomRouter extends Component {
   render() {
@@ -12,6 +13,7 @@ export default class CustomRouter extends Component {
         <BrowserRouter>
             <div>
                 <Route path="/beers/:id" component={BeerDetail} />
+                <Route path="/" component={BeerList} />
             </div>
         </BrowserRouter >
     );

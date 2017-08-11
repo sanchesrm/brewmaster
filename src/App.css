@@ -22,3 +22,12 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.collection {
+  margin-right: 40%;
+  margin-left: 40%;
+}
+
+.collection .collection-item.avatar {
+  padding-left: 0px;
+}
